@@ -1,4 +1,5 @@
-import React, { FormEvent, useState } from 'react'
+import { FormEvent, useState } from 'react'
+import { AuthService } from '../../auth/AuthService'
 
 async function loginUser({
     username,
@@ -7,6 +8,7 @@ async function loginUser({
     username: string
     password: string
 }) {
+    AuthService.login({username, password}).
     return fetch('http://localhost:8080/login', {
         method: 'POST',
         headers: {
@@ -25,7 +27,6 @@ export default function Login({
     const [password, setPassword] = useState('')
 
     const handleSubmit = async (event: FormEvent) => {
-        event.preventDefault()
         const token = await loginUser({
             username,
             password,
@@ -34,24 +35,48 @@ export default function Login({
     }
 
     return (
-        <div className='Login'>
-            <form className='login-form' onSubmit={handleSubmit}>
-                <label className='username-lable'>
-                    <p>Username</p>
+        <>
+            <h1 className='mt-2 ml-2 select-none text-gray-600 text-sm font-bold mb-2'>
+                Emergency Service
+            </h1>
+            <div className='bg-white shadow-md rounded p-8 mb-4 flex flex-col items-center'>
+                <div className='mb-6'>
+                    <label className='block select-none text-gray-600 text-sm font-bold mb-2'>
+                        Username
+                    </label>
                     <input
                         type='text'
                         onChange={(e) => setUserName(e.target.value)}
+                        className='shadow appearance-none border rounded border-red w-full py-2 px-3 text-gray-600 mb-3'
                     />
-                </label>
-                <label className='password-lable'>
-                    <p>Password</p>
+                </div>
+                <div className='mb-6'>
+                    <label className='block select-none text-gray-600 text-sm font-bold mb-2'>
+                        Passwort
+                    </label>
                     <input
                         type='password'
                         onChange={(e) => setPassword(e.target.value)}
+                        className='shadow appearance-none border rounded border-red w-full py-2 px-3 text-gray-600 mb-1'
                     />
-                </label>
-                <button type='submit'>Submit</button>
-            </form>
-        </div>
+                    {!password ? (
+                        <p className='text-red-600 select-none text-xs italic text-center'>
+                            Bitte wählen sie ein sicheres Passwort.
+                        </p>
+                    ) : (
+                        <></>
+                    )}
+                </div>
+                <div className='mb-6'>
+                    <button
+                        className='bg-blue-600 hover:bg-blue-800 text-white font-bold py-2 px-4 rounded transition-colors'
+                        type='submit'
+                        onClick={handleSubmit}
+                    >
+                        Submit
+                    </button>
+                </div>
+            </div>
+        </>
     )
 }
