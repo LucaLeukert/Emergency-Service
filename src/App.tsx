@@ -1,6 +1,5 @@
 import Login from './components/Login/Login'
 import HomeScreen from './components/HomeScreen'
-import useAuth from './hook/useAuth'
 import { ToastContainer } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
 import { AuthService } from './auth/AuthService'
