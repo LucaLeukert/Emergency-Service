@@ -1,6 +1,6 @@
 import HomeScreenApp from '../HomeScreenApp/HomeScreenApp'
 import { Gi3DGlasses } from 'react-icons/gi'
-import './HomeScreen.module.css'
+import './HomeScreen.css'
 
 export default function HomeScreen() {
     return (

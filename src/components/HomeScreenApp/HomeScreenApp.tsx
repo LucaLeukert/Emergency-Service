@@ -1,4 +1,4 @@
-import './HomeScreenApp.module.css'
+import './HomeScreenApp.css'
 import { IconBaseProps } from 'react-icons'
 
 function HomeScreenApp({
