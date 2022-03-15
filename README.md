@@ -1,6 +1,6 @@
 # Emergency-Service
 
-Emergency Service is an similar to emergencyos.de a Webseite used on GTF RP Servers
+Emergency Service is an similar to [emergencyos.de](https://emergencyos.de) a Webseite used on GTF RP Servers
 
 ## Available Scripts
 
